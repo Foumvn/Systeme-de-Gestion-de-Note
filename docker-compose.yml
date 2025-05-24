@@ -1,0 +1,24 @@
+services:
+  api-gateway:
+    build: ./api-gateway
+    depends_on:
+    - auth-service
+    - discovery-service
+    ports:
+    - 8080:8080
+  auth-service:
+    build: ./auth-service
+    depends_on:
+    - discovery-service
+    - config-server
+    ports:
+    - 8081:8081
+  config-server:
+    build: ./config-server
+    ports:
+    - 8888:8888
+  discovery-service:
+    build: ./discovery-service
+    ports:
+    - 8761:8761
+version: '3.8'
