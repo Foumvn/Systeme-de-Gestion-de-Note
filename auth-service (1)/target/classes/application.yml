@@ -1,16 +1,16 @@
-server:
-  port: 8081
+jwt:
+  secret: "mySuperSecretKeyWithAtLeast32Characters123!"
+  expiration: 86400000  # 24h en ms
 
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:authdb
     driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
   h2:
     console:
       enabled: true
+  jpa:
+    show-sql: true
+
+server:
+  port: 8081
